@@ -10,9 +10,9 @@ function Result({correctAnswers, questionsCount}) {
     return (
       <div className="result">
         <img src={imgSrc} alt="Not found" />
-        <h2>Вы отгадали {correctAnswers} ответа из {questionsCount}</h2>
+        <h2>You've guessed {correctAnswers} out of {questionsCount} answers</h2>
         <a href="/">
-          <button>Попробовать снова</button>
+          <button>Try again</button>
         </a>
       </div>
     );

@@ -7,25 +7,34 @@ import './index.scss';
 
 const questions = [
   {
-    title: 'React - это ... ?',
-    variants: ['библиотека', 'фреймворк', 'приложение'],
+    title: 'What is React ?',
+    variants: ['library', 'framework', 'application'],
     correct: 0,
   },
 
   {
-    title: 'Компонент - это ... ',
-    variants: ['приложение', 'часть приложения или страницы', 'то, что я не знаю что такое'],
+    title: 'React Component is ...  ',
+    variants: ['an app ', 'a part of an app', 'none of the variants above'],
     correct: 1,
   },
   
   {
-    title: 'Что такое JSX?',
+    title: 'What is JSX?',
     variants: [
-      'Это простой HTML',
-      'Это функция',
-      'Это тот же HTML, но с возможностью выполнять JS-код',
+      'Just a simple HTML',
+      'It is a function',
+      'The same HTML, but which allows to write JS code',
     ],
     correct: 2,
+  },
+  {
+    title: 'Which is not a programming lang.?',
+    variants: [
+      'Java Script',
+      'HTML',
+      'Java',
+    ],
+    correct: 1,
   },
 ];
 
