@@ -92,7 +92,7 @@ body {
       height: 10px;
       border-radius: 30px;
       transition: all 0.2s ease-in-out;
-      background: linear-gradient(90deg, rgba(18, 231, 48, 1) 0%, rgba(0, 212, 255, 1) 100%);
+      background: linear-gradient(90deg, rgba(193,193,237,1) 49%, rgba(0,212,255,1) 100%);
     }
   }
 
@@ -114,5 +114,25 @@ body {
         transform: scale(0.99);
       }
     }
+  }
+
+  @media (max-width: 610px) {
+    width: 400px;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 510px) {
+    width: 300px;
+    font-size: 0.8rem;
+  }
+
+  
+  @media (max-width: 410px) {
+    width: 250px;
+  }
+
+  @media (max-width: 360px) {
+    width: 200px;
+    font-size: 0.7rem;
   }
 }

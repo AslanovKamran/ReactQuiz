@@ -1,67 +1,51 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import Game from './components/Game';
 import Result from './components/Result';
 import './index.scss';
+import Loader from './modules/Loader';
 
-
-
-const questions = [
-  {
-    title: 'What is React ?',
-    variants: ['library', 'framework', 'application'],
-    correct: 0,
-  },
-
-  {
-    title: 'React Component is ...  ',
-    variants: ['an app ', 'a part of an app', 'none of the variants above'],
-    correct: 1,
-  },
-  
-  {
-    title: 'What is JSX?',
-    variants: [
-      'Just a simple HTML',
-      'It is a function',
-      'The same HTML, but which allows to write JS code',
-    ],
-    correct: 2,
-  },
-  {
-    title: 'Which is not a programming lang.?',
-    variants: [
-      'Java Script',
-      'HTML',
-      'Java',
-    ],
-    correct: 1,
-  },
-];
+const mockapiUrl = "https://63655ce1f711cb49d1fc5811.mockapi.io/questions";
 
 function App() {
 
+  async function LoadQuestionsAsyc() {
+    await axios.get(mockapiUrl)
+      .then((result) => { setQuestions(result.data); })
+      .catch((error) => { console.log(error) });
+  }
+
+  useEffect(() => {
+    LoadQuestionsAsyc();
+  }, [])
+
+  const [questions, setQuestions] = useState([]);
   const [step, setStep] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const question = questions[step];
 
-
   function onVariantClick(index) {
-   questions[step].correct === index ? setCorrectAnswers(correctAnswers+1) : setCorrectAnswers(correctAnswers+0);
-   setStep(step + 1);
+    console.log("I clicked on " + index);
+    console.log("Coorect answer is " + questions[step].correct);
+    questions[step].correct === index.toString() ? setCorrectAnswers(correctAnswers + 1) : setCorrectAnswers(correctAnswers + 0);
+    console.log(correctAnswers);
+    setStep(step + 1);
   }
 
-  if(questions){
 
-    return (
-      <div className="App">
+
+  if (questions.length === 0) return (<Loader />)
+
+  return (
+    <div className="App">
       {
-        step !== questions.length 
-        ? <Game step={step} question={question} onVariantClick={onVariantClick} questionsCount = {questions.length}/>
-        : <Result correctAnswers={correctAnswers} questionsCount = {questions.length}/>
+        step !== questions.length
+          ? <Game step={step} question={question} onVariantClick={onVariantClick} questionsCount={questions.length} />
+          : <Result correctAnswers={correctAnswers} questionsCount={questions.length} />
       }
     </div>
   );
 }
-}
+
 
 export default App;
